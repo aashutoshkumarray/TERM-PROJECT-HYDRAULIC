@@ -67,8 +67,8 @@ print("Q(FA)", x_new[5], "m3/s")
 print("Q(BE)", x_new[6], "m3/s")
 
 # Define arrays for length, diameter & elevation
-lengths = np.array([1500, 1500, 1200, 1500, 1500, 1200, 1200])
-diameters = np.array([0.8, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7])
+l=np.array([600,600,200,600,600,200,200])
+d=np.array([0.25,0.15,0.1,0.15,0.15,0.2,0.1])
 elevations = np.array([30, 25, 20, 20, 22, 25])
 friction_factor = 0.2
 initial_head = 15
@@ -78,7 +78,7 @@ print("Head at node 1 is =", initial_head, "m")
 head = initial_head
 
 for i in range(5):
-    hf_next = (16 * friction_factor * lengths[i] * (x_new[i]**2)) / (2 * 9.81 * diameters[i]**5 * np.pi**2)
+    hf_next = (16 * friction_factor * l[i] * (x_new[i]**2)) / (2 * 9.81 * d[i]**5 * np.pi**2)
     if elevations[i] > elevations[i + 1]:
         head = head - hf_next
     else:
